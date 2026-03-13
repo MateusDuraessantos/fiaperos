@@ -1,9 +1,6 @@
-package br.com.fiap.fluxor.initials
+package br.com.fiap.fluxor.ui.screens.initial
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,62 +15,39 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.FloatingActionButtonDefaults.elevation
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.modifier.modifierLocalOf
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import br.com.fiap.fluxor.Codec
-import br.com.fiap.fluxor.LoginScreen
+import androidx.media3.transformer.Codec
 import br.com.fiap.fluxor.R
-import br.com.fiap.fluxor.ui.theme.FluxORTheme
-import org.w3c.dom.Text
+import br.com.fiap.fluxor.ui.theme.poppinsFamily
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            FluxORTheme {
-                InitialsScreen()
-            }
-        }
-    }
-}
 
 @Composable
-fun InitialsScreen() {
+fun InitialScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFFFFFFF))
     ){
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(30.dp),
-            shape = RoundedCornerShape(0.dp),
-            colors = CardDefaults.cardColors(containerColor = Color(0xFF001D4D)),
-        ) { }
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = 50.dp, start = 20.dp, end = 20.dp)
+                .padding(top = 16.dp, start = 20.dp, end = 20.dp)
         ) {
             Text(
                 text = "Desempenho Operacional",
                 modifier = Modifier,
                 fontSize = 13.sp,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.Medium,
                 color = Color.Black,
-                fontFamily = Codec
+                fontFamily = poppinsFamily
 
             )
             Row(
@@ -184,12 +158,4 @@ fun InitialsScreen() {
 
     }
 
-}
-
-@Preview(showBackground = true)
-@Composable
-fun InitialsScreenPreview() {
-    FluxORTheme {
-        InitialsScreen()
-    }
 }
