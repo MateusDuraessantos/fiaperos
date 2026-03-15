@@ -10,6 +10,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -19,8 +20,10 @@ fun CompliancesScreen(
 ) {
 
     val categorias by viewModel.categorias.collectAsState()
-
     var searchQuery by remember { mutableStateOf("") }
+    val categoriasFiltradas = categorias.filter { categoria ->
+        categoria.titulo.contains(searchQuery, ignoreCase = true)
+    }
 
     Column(
         modifier = Modifier
@@ -43,19 +46,20 @@ fun CompliancesScreen(
             shape = RoundedCornerShape(50),
             singleLine = true,
             colors = OutlinedTextFieldDefaults.colors(
-                focusedContainerColor = MaterialTheme.colorScheme.surface,
-                unfocusedContainerColor = MaterialTheme.colorScheme.surface
+                focusedContainerColor = MaterialTheme.colorScheme.background,
+                unfocusedContainerColor = MaterialTheme.colorScheme.background,
+                focusedTextColor = Color.Black,
+                unfocusedTextColor = Color.Black,
+                cursorColor = Color.Black
             )
         )
 
         Spacer(modifier = Modifier.height(24.dp))
 
-
         LazyColumn(
             modifier = Modifier.fillMaxSize()
         ) {
-
-            items(categorias) { categoria ->
+            items(categoriasFiltradas) { categoria ->
                 CategoriaItem(
                     titulo = categoria.titulo,
                     onClick = { onCategoriaClick(categoria.id) }
@@ -70,7 +74,6 @@ fun CompliancesScreen(
     }
 }
 
-
 @Composable
 fun CategoriaItem(titulo: String, onClick: () -> Unit) {
     Box(
@@ -82,7 +85,7 @@ fun CategoriaItem(titulo: String, onClick: () -> Unit) {
         Text(
             text = titulo,
             style = MaterialTheme.typography.bodyLarge,
-            color = MaterialTheme.colorScheme.onSurface
+            color = Color.Black
         )
     }
 }

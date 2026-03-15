@@ -108,7 +108,7 @@ fun EtapaItemCard(etapa: EtapaCompliance) {
                 )
                 Spacer(modifier = Modifier.width(12.dp))
                 Column {
-                    Text(text = etapa.titulo, fontFamily = poppinsFamily, fontWeight = FontWeight.SemiBold)
+                    Text(text = etapa.titulo, fontFamily = poppinsFamily, fontWeight = FontWeight.SemiBold, color = Color.Black)
                     Text(text = "Concluído", color = Color(0xFF9E9E9E), fontSize = 12.sp)
                 }
             }
@@ -183,9 +183,9 @@ fun EtapaItemCard(etapa: EtapaCompliance) {
                     modifier = Modifier.padding(16.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Icon(Icons.Filled.Info, contentDescription = null, tint = MaterialTheme.colorScheme.onPrimary)
+                    Icon(Icons.Filled.Info, contentDescription = null, tint = Color(0xFFFFFFFF))
                     Spacer(modifier = Modifier.width(8.dp))
-                    Text(text = etapa.titulo, fontFamily = poppinsFamily, fontWeight = FontWeight.Normal, color = MaterialTheme.colorScheme.onPrimary)
+                    Text(text = etapa.titulo, fontFamily = poppinsFamily, fontWeight = FontWeight.Normal, color = Color.White)
                 }
             }
         }

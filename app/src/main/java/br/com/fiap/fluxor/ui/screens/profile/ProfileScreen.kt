@@ -8,7 +8,6 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -56,7 +55,7 @@ fun ProfileScreen(onLogoutClick: () -> Unit) {
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             fontFamily = poppinsFamily,
-            color = MaterialTheme.colorScheme.onSurface
+            color = Color.Black
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -80,22 +79,26 @@ fun ProfileScreen(onLogoutClick: () -> Unit) {
             modifier = Modifier.fillMaxWidth().height(50.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF0000))
         ) {
-            Text("Sair da Conta")
+            Text("Sair da Conta", color = Color.White)
         }
     }
 }
 
 
 @Composable
-fun ProfileInfoRow(label: String, value: String) {
+fun ProfileInfoRow(
+    label: String,
+    value: String,
+    corDoTexto: Color = Color.Black
+) {
     Row {
         Text(
             text = "$label: ",
-            color = MaterialTheme.colorScheme.onSurfaceVariant
+            color = corDoTexto
         )
         Text(
             text = value,
-            color = MaterialTheme.colorScheme.onSurface
+            color = corDoTexto
         )
     }
 }

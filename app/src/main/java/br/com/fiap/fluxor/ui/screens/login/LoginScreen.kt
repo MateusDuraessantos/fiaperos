@@ -24,6 +24,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -47,7 +48,6 @@ fun LoginScreen(onLoginClick: () -> Unit) {
     var email by remember { mutableStateOf("") }
     var senha by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
-
 
     var errorMessage by remember { mutableStateOf<String?>(null) }
 
@@ -129,7 +129,12 @@ fun LoginScreen(onLoginClick: () -> Unit) {
                             Icon(Icons.Default.Email, contentDescription = null, tint = Color.Black.copy(alpha = 0.5f))
                         },
                         isError = errorMessage != null && email.isBlank(),
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedTextColor = Color.Black,
+                            unfocusedTextColor = Color.Black,
+                            cursorColor = Color.Black
+                        )
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
@@ -165,11 +170,15 @@ fun LoginScreen(onLoginClick: () -> Unit) {
                         },
                         visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                         isError = errorMessage != null && senha.isBlank(),
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth(),
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedTextColor = Color.Black,
+                            unfocusedTextColor = Color.Black,
+                            cursorColor = Color.Black
+                        )
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
-
 
                     if (errorMessage != null) {
                         Text(
@@ -183,7 +192,6 @@ fun LoginScreen(onLoginClick: () -> Unit) {
                     }
 
                     Button(
-                        // 4. Lógica de validação ao clicar no botão
                         onClick = {
                             if (email.isBlank() || senha.isBlank()) {
                                 errorMessage = "Por favor, preencha todos os campos."
